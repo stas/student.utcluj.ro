@@ -2,15 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo $site_title; if($page_title) echo " / ".$page_title; ?></title>
+    <title><?=$site_title; if($page_title) echo " / ".$page_title; ?></title>
     <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
     <link rel="shortcut icon" href="http://www.utcluj.ro/favicon.ico" type="image/x-icon" /> 
     <meta http-equiv="X-UA-Compatible" content="chrome=1"></head>
+    <script>
+        var RecaptchaOptions = {
+           theme : 'clean'
+        };
+    </script>
 <body>
   <div id="container">
     <div id="header">
-      <div id="logo"></div>
       <h1><a href="index.html"><?php echo $site_title; ?></a></h1>
       <div id="main-navigation">
         <ul class="wat-cf">

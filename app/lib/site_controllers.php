@@ -49,10 +49,6 @@ function creare() {
     set('recaptcha', recaptcha_get_html(Config::get_key('recaptcha_pubkey')));
     if(flash_now('fail'))
 	set('s', $_SESSION['s']);
-    
-    //$cont = new Cont();
-    //set('rez',$cont->alias_info('Stas.Suscov'));
-	
     return html('signup.php');
 }
 
@@ -76,7 +72,7 @@ function cont_nou() {
 	flash('fail', 'Contul nu a fost creat. Verificați testul anti-robot.');
     }
     else if(!empty($s['cnp']) && !empty($s['cont']) && !empty($s['parola'])) {
-	$cont = new Cont();
+	$cont = new Student();
 	$u = $cont->valid_user($s['cont'], $s['parola'], $s['cnp'], $s['alias']);
 	if($u)
 	    if($cont->create_user($u))
@@ -123,25 +119,18 @@ function trimite() {
 	flash('fail', 'Mesajul nu a fost trimis. Verificați testul anti-robot.');
     }
     else if(!empty($c['nume']) && !empty($c['email']) && !empty($c['mesaj'])) {
-	    $to = Config::get_key('site_email');
-	    $subject = Config::get_key('site_title'). " / Contact";
-	    $headers = array();
-	    $headers['MIME-Version'] = "1.0";
-	    $headers['Content-type'] = "text/plain; charset=UTF-8";
-	    $headers['From'] = $c['email'];
-	    $headers['To'] = $to;
-	    $headers['Return-Path'] = $to;
-	    $headers['X-Mailer'] = 'PHP/' . phpversion();
-	    $headers['X-Limonade'] = LIM_SESSION_NAME . ' / '.LIMONADE;
-	    $body = $c['nume'] ." cu contul SINU: `". $c['cont'] ."` a scris:\n---\n". $c['mesaj'] ."\n---\n";
-	    $headers_lines = array();
-	    foreach($headers as $k=>$v) $headers_lines[] = $k.": ".$v;
-	    $sent = @mail($to, $subject, $body, implode("\r\n",$headers_lines));
-	    
-	    if($sent)
-		flash('ok', 'Mesajul a fost trimis. Mulțumim.');
-	    else
-		flash('fail', 'Mesajul nu a fost trimis. A intervenit o eroare.');
+	$mail = new PHPMailerLite();
+	$mail->ContentType = 'text/plain';
+	$mail->CharSet = 'UTF-8';
+	$mail->AddReplyTo($c['email'], $c['nume']);
+	$mail->SetFrom($c['email'], $c['nume']);
+	$mail->AddAddress(Config::get_key('site_email'));
+	$mail->Subject = Config::get_key('site_title'). " / Contact";
+	$mail->Body = $c['nume'] ." cu contul SINU: `". $c['cont'] ."` a scris:\n---\n". $c['mesaj'] ."\n---\n";
+	if($mail->Send())
+	    flash('ok', 'Mesajul a fost trimis. Mulțumim.');
+	else
+	    flash('fail', 'Mesajul nu a fost trimis. A intervenit o eroare.');
     }
     else {
 	flash('fail', 'Mesajul nu a fost trimis. Verificați câmpurile obligatorii.');

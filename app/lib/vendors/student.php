@@ -2,8 +2,7 @@
 /**
  * Class to handle registrarion against ldap and SINU
  */
-class Cont {
-    
+class Student {
     function __construct() {
         $this->sinu_uri = Config::get_key('sinu_uri');
         $this->l = new Ldap();
@@ -14,7 +13,7 @@ class Cont {
         $this->l->connect();
     }
     
-    function Cont() {}
+    function Student() {}
     
     function load_home_dn() {
         $this->l->setBaseDN(Config::get_key('ldap', 'base_dn'));

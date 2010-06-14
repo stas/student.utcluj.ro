@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
     <link rel="shortcut icon" href="http://www.utcluj.ro/favicon.ico" type="image/x-icon" /> 
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <script>
+        var RecaptchaOptions = {
+           theme : 'clean'
+        };
+    </script>
 </head>
 <body>
   <div id="container">
     <div id="header">
-      <div id="logo"></div>
       <h1><a href="/"><?php echo $site_title; ?></a></h1>
       <div id="main-navigation">
         <ul class="wat-cf">

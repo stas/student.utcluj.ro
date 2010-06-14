@@ -5,7 +5,7 @@ function configure() {
     option('lib_dir', file_path(option('app_dir'), 'lib'));
     option('views_dir', file_path(option('app_dir'), 'views'));
     option('session', "app_session");
-    option('debug', true);
+    option('debug', false);
     setlocale(LC_TIME, "ro_RO");
 }
 
@@ -18,10 +18,6 @@ dispatch('/creare', 'creare');
 dispatch_post('/creare', 'cont_nou');
 dispatch('/contact', 'contact');
 dispatch_post('/contact', 'trimite');
-
-
-//dispatch_post  ('/cont', 'cont_creare');
-
 run();
 
 ?>

@@ -24,7 +24,7 @@ input.checkbox {
 #header h1 {
   font-size: 28px;
   padding: 5px 0;
-  margin: 35px 0;
+  margin: 15px 0;
   font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
   letter-spacing: -1px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -40,26 +40,7 @@ input.checkbox {
   color: #999;
 }
 #header {
-  background: #990000;
-}
-
-#header #logo {
-  margin-top: -1px;
-  background: #fff url('/img/utcn.png') no-repeat center;
-  width: 110px;
-  height: 110px;
-  float: right;
-  border: 1px solid #444;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-top: 0;
-  border-radius: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  -moz-border-radius: 5px;
-  -moz-border-radius-topleft: 0;
-  -moz-border-radius-topright: 0;
-  -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+  background: #990000 url('/img/header.png') no-repeat right top;
 }
 
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
@@ -118,7 +99,8 @@ input.checkbox {
 #footer .block {
   font-size:11px;
   background-color: #ddd;
-  padding: 0 10px;
+  padding: 0;
+  margin: 0 20px;
   text-align: right;
 }
 
@@ -126,6 +108,18 @@ input.checkbox {
   font-size: 10px;
   color: #444;
   font-style: italic;
+  text-align: left;
+}
+
+#footer a.footer_logo {
+  background: transparent url("/img/utcn_f_g.png") no-repeat right top;
+  width: 150px;
+  height: 30px;
+  float: right;
+}
+
+#footer a.footer_logo:hover {
+  background: transparent url("/img/utcn_f.png") no-repeat right top;
 }
 
 /* #sidebar .block { background: #FFF; padding-bottom:0px; } */
@@ -435,4 +429,16 @@ ul.list li .left  {
   border-top-right-radius: 5px;
   -moz-border-radius-topleft: 5px;
   -moz-border-radius-topright: 5px;
+}
+
+/* reCaptcha */
+#recaptcha_table {
+  border-color: #fff !important; //reCaptcha widget border color
+}
+
+#recaptcha_response_field {
+  border-right: 1px solid #ddd !important;
+  border-bottom: 1px solid #ddd !important;
+  border-top: 2px solid #ccc !important;
+  border-left: 2px solid #ccc !important;
 }
